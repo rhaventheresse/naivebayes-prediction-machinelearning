@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Style 8</title>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "45px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
+<style>
+body{
+	background: #348A96;
+}
+.form-style-8{
+	font-family: 'Open Sans Condensed', arial, sans;
+	width: 900px;
+	padding: 30px;
+	background: #FFFFFF;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+.form-style-8 h2{
+	background: #4D4D4D;
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #797979;
+	font-size: 18px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+}
+.form-style-8 input[type="text"],
+.form-style-8 input[type="time"],
+.form-style-8 input[type="number"],
+.form-style-8 select 
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px;
+}
+.form-style-8 textarea{
+	resize:none;
+	overflow: hidden;
+}
+.form-style-8 input[type="button"], 
+.form-style-8 input[type="submit"]{
+	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 14px;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.form-style-8 input[type="button"]:hover, 
+.form-style-8 input[type="submit"]:hover {
+	background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+	background-color:#34CACA;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-style-8">
+  <h2>RESULTS</h2>
+Gender: {{ InputGender }}<br>
+Age: {{ InputAge }}<br>
+Time: {{ InputTime }}<br>
+Type of Warts: {{ InputType }}<br>
+No. of Warts: {{ InputWarts }}<br>
+Area of Warts: {{ InputArea }}
+<br>
+RESULT: <strong>{{ Treat }}</strong>
+
+</div>
+
+
+<div class="form-style-8">
+  <h2>Dataset Tables</h2>
+Gender<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Gender</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>Male:</td>
+		<td>{{ GenCount[0][1] }}</td>
+		<td>{{ GenCount[0][2] }}</td>
+		<td>{{ (GenCount[0][1]+GenCount[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>Female:</td>
+		<td>{{ GenCount[1][1] }}</td>
+		<td>{{ GenCount[1][2] }}</td>
+		<td>{{ (GenCount[1][1]+GenCount[1][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+
+Age<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Age Range</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>{{ AgeBracket[0][0] }}</td>
+		<td>{{ AgeBracket[0][1] }}</td>
+		<td>{{ AgeBracket[0][2] }}</td>
+		<td>{{ (AgeBracket[0][1]+AgeBracket[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ AgeBracket[1][0] }}</td>
+		<td>{{ AgeBracket[1][1] }}</td>
+		<td>{{ AgeBracket[1][2] }}</td>
+		<td>{{ (AgeBracket[1][1]+AgeBracket[1][2])/GenTotal }}</td>
+	</tr>
+		<td>{{ AgeBracket[2][0] }}</td>
+		<td>{{ AgeBracket[2][1] }}</td>
+		<td>{{ AgeBracket[2][2] }}</td>
+		<td>{{ (AgeBracket[2][1]+AgeBracket[2][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+
+Warts Type<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Warts Type</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>Type 1</td>
+		<td>{{ TypeCount[0][1] }}</td>
+		<td>{{ TypeCount[0][2] }}</td>
+		<td>{{ (TypeCount[0][1]+TypeCount[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>Type 2</td>
+		<td>{{ TypeCount[1][1] }}</td>
+		<td>{{ TypeCount[1][2] }}</td>
+		<td>{{ (TypeCount[1][1]+TypeCount[1][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>Type 3</td>
+		<td>{{ TypeCount[2][1] }}</td>
+		<td>{{ TypeCount[2][2] }}</td>
+		<td>{{ (TypeCount[2][1]+TypeCount[2][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+Time<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Time Range</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>{{ TimeBracket[0][0] }}</td>
+		<td>{{ TimeBracket[0][1] }}</td>
+		<td>{{ TimeBracket[0][2] }}</td>
+		<td>{{ (TimeBracket[0][1]+TimeBracket[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ TimeBracket[1][0] }}</td>
+		<td>{{ TimeBracket[1][1] }}</td>
+		<td>{{ TimeBracket[1][2] }}</td>
+		<td>{{ (TimeBracket[1][1]+TimeBracket[1][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ TimeBracket[2][0] }}</td>
+		<td>{{ TimeBracket[2][1] }}</td>
+		<td>{{ TimeBracket[2][2] }}</td>
+		<td>{{ (TimeBracket[2][1]+TimeBracket[2][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+Number of Warts<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Warts Range</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>{{ WartBracket[0][0] }}</td>
+		<td>{{ WartBracket[0][1] }}</td>
+		<td>{{ WartBracket[0][2] }}</td>
+		<td>{{ (WartBracket[0][1]+WartBracket[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ WartBracket[1][0] }}</td>
+		<td>{{ WartBracket[1][1] }}</td>
+		<td>{{ WartBracket[1][2] }}</td>
+		<td>{{ (WartBracket[1][1]+WartBracket[1][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ WartBracket[2][0] }}</td>
+		<td>{{ WartBracket[2][1] }}</td>
+		<td>{{ WartBracket[2][2] }}</td>
+		<td>{{ (WartBracket[2][1]+WartBracket[2][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+Area of Warts<br>
+<table style="border:1 solid black; padding: 6px; text-align: center; width: 900px;height: auto;">
+	<tr>
+		<th>Area Range</th>
+		<th>Treated</th>
+		<th>Not Treated</th>
+		<th>Results</th>
+	</tr>
+	<tr>
+		<td>{{ AreaBracket[0][0] }}</td>
+		<td>{{ AreaBracket[0][1] }}</td>
+		<td>{{ AreaBracket[0][2] }}</td>
+		<td>{{ (AreaBracket[0][1]+AreaBracket[0][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ AreaBracket[1][0] }}</td>
+		<td>{{ AreaBracket[1][1] }}</td>
+		<td>{{ AreaBracket[1][2] }}</td>
+		<td>{{ (AreaBracket[1][1]+AreaBracket[1][2])/GenTotal }}</td>
+	</tr>
+	<tr>
+		<td>{{ AreaBracket[2][0] }}</td>
+		<td>{{ AreaBracket[2][1] }}</td>
+		<td>{{ AreaBracket[2][2] }}</td>
+		<td>{{ (AreaBracket[2][1]+AreaBracket[2][2])/GenTotal }}</td>
+	</tr>
+</table>
+<br>
+
+</div>
+<br>
+{{ PerNo, PerYes }}
+</div>
+</body>
+</html>
